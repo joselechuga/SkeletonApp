@@ -13,11 +13,14 @@ export class HomePage {
   segmentChanged($event){
     console.log($event.detail.value);
     let direction=$event.detail.value
-    this.router.navigate(['home/'+direction])
+    if (direction =='salir'){
+      localStorage.removeItem('ingresado');
+      this.router.navigate(['login'])
+    }
+    else{
+       this.router.navigate(['home/'+direction])
+    }
   }
 
-  salir(){
-    localStorage.removeItem('ingresado');
-  }
 }
 
